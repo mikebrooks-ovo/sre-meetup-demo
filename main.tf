@@ -1,6 +1,7 @@
-provider "random" {}
+provider "aws" {
+  region = "eu-west-1"
+}
 
-resource "random_string" "password" {
-  length  = 16
-  special = true
+resource "aws_s3_bucket" "bucket" {
+  bucket_prefix = "some-very-random-bucket-prefix"
 }
