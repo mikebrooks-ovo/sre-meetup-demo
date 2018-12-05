@@ -1,0 +1,18 @@
+version: 2.1
+orbs:
+  terraform: ovotech/terraform@1
+workflows:
+  test:
+    jobs:
+      - terraform/plan:
+          path: "./"
+          filters:
+            branches:
+              ignore: master
+  commit:
+    jobs:
+      - terraform/apply:
+          path: "./"
+          filters:
+            branches:
+              only: master
